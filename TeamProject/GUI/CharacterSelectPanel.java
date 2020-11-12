@@ -1,6 +1,6 @@
 package GUI;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class CharacterSelectPanel extends JPanel {
 
@@ -9,7 +9,7 @@ public class CharacterSelectPanel extends JPanel {
 	 */
 	private JLabel errorLabel;
 	
-	public TestPanel() {
+	public void TestPanel() {
 		setLayout(null);
 		
 		//Character 1 Label and Button------------------------------------------------

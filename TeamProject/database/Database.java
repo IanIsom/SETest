@@ -102,4 +102,19 @@ public class Database
 		}  
 	
 	  }
+	  
+	  //add a friend in the lobby
+	  public boolean addContact(String usernameAdder, String usernameAdded)
+	  {
+		  try {
+			  insert("INSERT INTO contact" 
+					  + "(username, contact_username)"
+					  + "VALUES ('"+ usernameAdder +"', aes_encrypt('" + usernameAdded + "','key'))");
+					 return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}  
+	
+	  }
 	}

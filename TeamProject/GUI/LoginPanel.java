@@ -1,9 +1,12 @@
 package GUI;
 
-import java.awt.Color;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
+
+import clientSubSystem.LoginControl;
+
 
 public class LoginPanel extends JPanel
 {
@@ -40,7 +43,7 @@ public class LoginPanel extends JPanel
 		JPanel labelP = new JPanel (new GridLayout(2,1,5,5));
 		
 		errorLabel = new JLabel("", JLabel.CENTER);
-		errorLabel.setForground(Color.RED);
+		errorLabel.setForeground(Color.RED);
 		
 		JLabel instructionLabel = new JLabel("Enter your username and password to log in", JLabel.CENTER);
 		
@@ -69,14 +72,14 @@ public class LoginPanel extends JPanel
 		JPanel buttonP = new JPanel();
 		
 		JButton submitButton = new JButton("Submit");
-		submitButton.addActionListener(lc);
+		submitButton.addActionListener((ActionListener) lc);
 		
 		JButton cancelButton = new JButton("Cancel");
-		cancelButton.addActionListener(lc);
+		cancelButton.addActionListener((ActionListener) lc);
 		
 		//add labels and buttons
-		buttonPanel.add(submitButton);
-		buttonPanel.add(cancelButton);
+		buttonP.add(submitButton);
+		buttonP.add(cancelButton);
 		//-----------------------------------------------------------------------------------------------------------
 		
 		//add panels to the grid

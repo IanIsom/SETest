@@ -1,6 +1,6 @@
 package GUI;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class GameLobbyPanel extends JPanel {
 

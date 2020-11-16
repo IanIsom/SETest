@@ -7,3 +7,5 @@
 /GameLobbyPanel.class
 /CharacterSelectPanel.class
 /GameArenaPanel.class
+/ServerGUI.class
+/ServerGUI$EventHandler.class

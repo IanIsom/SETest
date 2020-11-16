@@ -12,7 +12,7 @@ public class Database
 	public Database() throws SQLException, IOException
 	{
 	    Properties prop = new Properties();
-	    FileInputStream fis = new FileInputStream("lab7out/db.properties");
+	    FileInputStream fis = new FileInputStream("Database/db.properties");
 	    prop.load(fis);
 	    try {		    
 			Class.forName("com.mysql.jdbc.Driver");

@@ -1,1 +1,1 @@
-java -cp .;ocsf.jar TeamProject.clientSubSystem.GameClient
+java -cp .;ocsf.jar GUI.GameGUI

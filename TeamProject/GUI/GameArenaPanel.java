@@ -1,6 +1,6 @@
 package GUI;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class GameArenaPanel extends JPanel {
 	/**
@@ -8,7 +8,7 @@ public class GameArenaPanel extends JPanel {
 	 */
 	private JLabel errorLabel;
 	
-	public TestPanel() {
+	public GameArenaPanel() {
 		setLayout(null);
 		
 		//Player 1------------------------------------------------------

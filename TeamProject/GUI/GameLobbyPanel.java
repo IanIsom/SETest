@@ -9,7 +9,7 @@ public class GameLobbyPanel extends JPanel {
 	 */
 	private JLabel errorLabel;
 	
-	public TestPanel() {
+	public GameLobbyPanel() {
 		setLayout(null);
 		
 		JList list = new JList();

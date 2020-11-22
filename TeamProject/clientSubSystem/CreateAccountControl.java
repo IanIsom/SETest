@@ -75,6 +75,8 @@ public class CreateAccountControl implements ActionListener
 		}
 		else {
 			displayError("");
+		     CardLayout cardLayout = (CardLayout)container.getLayout();
+		     cardLayout.show(container, "1");
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -84,7 +86,6 @@ public class CreateAccountControl implements ActionListener
 		e.printStackTrace();
 	}
       
-
 
 
     }

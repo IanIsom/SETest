@@ -8,36 +8,40 @@ public class GameArenaPanel extends JPanel {
 	 */
 	private JLabel errorLabel;
 	
-	public void TestPanel() {
+
+	public void TestPanel() {}
+
+	public GameArenaPanel() {
+
 		setLayout(null);
 		
 		//Player 1------------------------------------------------------
 		JLabel player1Label = new JLabel("Player 1");
-		player1Label.setBounds(10, 163, 49, 14);
+		player1Label.setBounds(10, 11, 49, 14);
 		add(player1Label);
 		
 		//Player 1 Buttons----------------------------------------------
 		JButton attackButton = new JButton("Attack");
-		attackButton.setBounds(10, 188, 89, 23);
+		attackButton.setBounds(10, 232, 89, 23);
 		add(attackButton);
 		
 		JButton defendButton = new JButton("Defend");
-		defendButton.setBounds(10, 222, 89, 23);
+		defendButton.setBounds(10, 266, 89, 23);
 		add(defendButton);
 		
 		JButton quitButton = new JButton("Quit Game");
-		quitButton.setBounds(329, 222, 89, 23);
+		quitButton.setBounds(329, 266, 89, 23);
 		add(quitButton);
 		
 		//Player 1 HP---------------------------------------------------
 		JLabel hp1Label = new JLabel("HP: ");
 		hp1Label.setHorizontalAlignment(SwingConstants.CENTER);
-		hp1Label.setBounds(55, 163, 31, 14);
+		hp1Label.setBounds(56, 11, 31, 14);
 		add(hp1Label);
 		
 		JLabel hp1Indicator = new JLabel("0");
 		hp1Indicator.setHorizontalAlignment(SwingConstants.CENTER);
-		hp1Indicator.setBounds(89, 163, 22, 14);
+		hp1Indicator.setBounds(77, 11, 22, 14);
 		add(hp1Indicator);
 		//---------------------------------------------------------------
 		

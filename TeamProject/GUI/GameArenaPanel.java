@@ -3,13 +3,8 @@ package GUI;
 import javax.swing.*;
 
 public class GameArenaPanel extends JPanel {
-	/**
-	 * Create the panel.
-	 */
-	private JLabel errorLabel;
 	
-
-	public void TestPanel() {}
+	private JLabel errorLabel;
 
 	public GameArenaPanel() {
 
@@ -60,7 +55,11 @@ public class GameArenaPanel extends JPanel {
 		hp2Indicator.setHorizontalAlignment(SwingConstants.CENTER);
 		hp2Indicator.setBounds(396, 11, 22, 14);
 		add(hp2Indicator);
+
 		//----------------------------------------------------------------
+		JLabel moveInfo = new JLabel("");
+		moveInfo.setBounds(193, 11, 46, 14);
+		add(moveInfo);
 	}
 	
 	//setter for error text

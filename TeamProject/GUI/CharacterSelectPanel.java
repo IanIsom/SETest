@@ -4,6 +4,9 @@ import javax.swing.*;
 
 import javax.swing.SwingConstants;
 
+import clientSubSystem.CreateAccountControl;
+import gameInterface.CharacterSelectControl;
+
 
 public class CharacterSelectPanel extends JPanel {
 
@@ -18,7 +21,7 @@ public class CharacterSelectPanel extends JPanel {
 	}
 	
 
-	public CharacterSelectPanel() {
+	public CharacterSelectPanel(CharacterSelectControl cs) {
 
 		setLayout(null);
 		

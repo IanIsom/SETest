@@ -1,5 +1,6 @@
 package gameInterface;
 
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,7 +22,15 @@ public class GameLobbyControl implements ActionListener{
 
 	
 	public void actionPerformed(ActionEvent e) {
-		//more to be added soon
+	    // Get the name of the button clicked.
+	    String command = e.getActionCommand();
+
+	    // The Cancel button takes the user back to the initial panel.
+	    if (command == "Find Games")
+	    {
+	      CardLayout cardLayout = (CardLayout)container.getLayout();
+	      cardLayout.show(container, "1");
+	    }
 		
 		
 	}

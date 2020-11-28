@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import clientSubSystem.CreateAccountControl;
 import clientSubSystem.GameClient;
 import clientSubSystem.LoginControl;
+import gameInterface.CharacterSelectControl;
 import gameInterface.GameLobbyControl;
 
 
@@ -48,7 +49,7 @@ public class GameGUI extends JFrame
     InitialControl ic = new InitialControl(container,client);
     LoginControl lc = new LoginControl(container,client);
     CreateAccountControl cac = new CreateAccountControl(container,client);
-    GameLobbyControl gl = new GameLobbyControl(container, client);
+    CharacterSelectControl cs = new CharacterSelectControl(container, client);
     
     //Set the client info
     client.setLoginControl(lc);
@@ -59,7 +60,7 @@ public class GameGUI extends JFrame
     JPanel view1 = new InitialPanel(ic);
     JPanel view2 = new LoginPanel(lc);
     JPanel view3 = new CreateAccountPanel(cac);
-    JPanel view4 = new GameLobbyPanel(gl);
+    JPanel view4 = new CharacterSelectPanel(cs);
     
     // Add the views to the card layout container.
     container.add(view1, "1");

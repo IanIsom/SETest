@@ -15,6 +15,8 @@ public class CharacterSelectPanel extends JPanel {
 
 		setLayout(null);
 		
+		
+		
 		//Character 1 Label and Button------------------------------------------------
 		JLabel character1Label = new JLabel("Character 1 Name(Water)");
 		character1Label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -30,11 +32,11 @@ public class CharacterSelectPanel extends JPanel {
 		//Character 2 Label and Button------------------------------------------------
 		JLabel character2Label = new JLabel("Character 2 Name(Fire)");
 		character2Label.setHorizontalAlignment(SwingConstants.CENTER);
-		character2Label.setBounds(250, 0, 168, 52);
+		character2Label.setBounds(443, 0, 168, 52);
 		this.add(character2Label);
 		
 		JButton btnNewButton_1 = new JButton("Choose Character 2");
-		btnNewButton_1.setBounds(250, 180, 168, 35);
+		btnNewButton_1.setBounds(443, 180, 168, 35);
 		this.add(btnNewButton_1);
 		/*
 		//----------------------------------------------------------------------------

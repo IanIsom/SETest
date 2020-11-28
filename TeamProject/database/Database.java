@@ -19,7 +19,6 @@ public class Database
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("Yikes");
 		}
 	    
 
@@ -27,7 +26,6 @@ public class Database
 	    String user = prop.getProperty("user");
 	    String pass = prop.getProperty("password"); 
 	    
-	    System.out.println(url + " " + user + " " + pass);
 	    conn = DriverManager.getConnection(url,user,pass);
 
 	}
@@ -95,21 +93,6 @@ public class Database
 			  insert("INSERT INTO user" 
 					  + "(username, password)"
 					  + "VALUES ('"+ username +"', aes_encrypt('" + password + "','key'))");
-					 return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}  
-	
-	  }
-	  
-	  //add a friend in the lobby
-	  public boolean addContact(String usernameAdder, String usernameAdded)
-	  {
-		  try {
-			  insert("INSERT INTO contact" 
-					  + "(username, contact_username)"
-					  + "VALUES ('"+ usernameAdder +"', aes_encrypt('" + usernameAdded + "','key'))");
 					 return true;
 		} catch (SQLException e) {
 			e.printStackTrace();

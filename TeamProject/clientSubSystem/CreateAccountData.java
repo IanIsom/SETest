@@ -33,6 +33,10 @@ public class CreateAccountData implements Serializable
     this.password = password;
   }
   
+  public void setVerifiedPassword(String verifiedPassword) {
+	  this.verifiedPassword = verifiedPassword;
+  }
+  
   // Constructor that initializes the username and password.
   public CreateAccountData(String username, String password)
   {

@@ -13,7 +13,6 @@ public class LoginPanel extends JPanel
 	//private datafields
 	private JTextField usernameField;
 	private JPasswordField passwordField;
-	private JPasswordField passwordVerifyField;
 	private JLabel errorLabel;
 		
 	//getter for username field text

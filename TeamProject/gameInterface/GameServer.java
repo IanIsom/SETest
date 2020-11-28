@@ -135,7 +135,7 @@ public class GameServer extends AbstractServer
         return;
       }
     }
-    
+    /*
     else if (arg0 instanceof GameLobbyData)
     {
       // Try to create the account.
@@ -161,7 +161,7 @@ public class GameServer extends AbstractServer
       {
         return;
       }
-    }
+    }*/
   }
 
   // Method that handles listening exceptions by displaying exception information.

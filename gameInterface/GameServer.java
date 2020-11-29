@@ -19,7 +19,7 @@ public class GameServer extends AbstractServer
   private JLabel status;
   private boolean running = false;
   private Database database; 
-  private int numConnections;
+  private int numConnections; //UPDATE
 
   // Constructor for initializing the server with default settings.
   public GameServer()

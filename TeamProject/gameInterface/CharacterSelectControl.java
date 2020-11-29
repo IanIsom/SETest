@@ -25,39 +25,40 @@ public class CharacterSelectControl implements ActionListener
 	public void actionPerformed(ActionEvent e) {
 	    // Get the name of the button clicked.
 	    String command = e.getActionCommand();
+	    
+	    String character = "";
+	    String hp = "";
+	    String attack = "";
 
 	    
 	    // The Login button takes the user to the login panel.
 	    if (command.equals("Choose Character 1"))
 	    {
-	      CardLayout cardLayout = (CardLayout)container.getLayout();
-	      cardLayout.show(container, "5");
+	    	
 	     
 	    }
 	    
 	    // The Create button takes the user to the create account panel.
 	    else if (command.equals("Choose Character 2"))
 	    {
-		      CardLayout cardLayout = (CardLayout)container.getLayout();
-		      cardLayout.show(container, "5");
+
 	    }
 	    
 	    else if (command.equals("Choose Character 3"))
 	    {
-		      CardLayout cardLayout = (CardLayout)container.getLayout();
-		      cardLayout.show(container, "5");
+
 	    }
 	    
 	    else if (command.equals("Choose Character 4"))
 	    {
-		      CardLayout cardLayout = (CardLayout)container.getLayout();
-		      cardLayout.show(container, "5");
+
 	    }
 		
 	}
 	
 	public void CharacterSelectSuccess(){
-		//more to be added soon
+	      CardLayout cardLayout = (CardLayout)container.getLayout();
+	      cardLayout.show(container, "5");
 		
 	}
 

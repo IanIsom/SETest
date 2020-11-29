@@ -3,11 +3,14 @@ package gameInterface;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
 import GUI.CharacterSelectPanel;
 import GUI.GameLobbyPanel;
+import GUI.LoginData;
+import GUI.LoginPanel;
 import clientSubSystem.GameClient;
 
 public class GameLobbyControl implements ActionListener{
@@ -28,12 +31,24 @@ public class GameLobbyControl implements ActionListener{
 	    // The Cancel button takes the user back to the initial panel.
 	    if (command.equals("Find Games"))
 	    {
-	      CardLayout cardLayout = (CardLayout)container.getLayout();
-	      cardLayout.show(container, "6");
+	        GameLobbyPanel GameLobbyPanel = (GameLobbyPanel)container.getComponent(1);
+	        GameLobbyData data = new GameLobbyData();
+	    	try {
+				client.sendToServer("find game");
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 	    }
 		
 		
 	}
+	
+	  public void gameFound()
+	  {
+	    CardLayout cardLayout = (CardLayout)container.getLayout();
+	    cardLayout.show(container, "6");
+	  }
 	  
 	public void displayError(String error) {
 		GameLobbyPanel gameLobbyPanel = (GameLobbyPanel)container.getComponent(2);

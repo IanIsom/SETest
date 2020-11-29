@@ -66,6 +66,10 @@ public class GameClient extends AbstractClient
       {
         createAccountControl.createAccountSuccess();
       }
+      else if (message.equals("Game Found"))
+      {
+        gameLobbyControl.gameFound();
+      }
     }
     
     // If we received an Error, figure out where to display it.

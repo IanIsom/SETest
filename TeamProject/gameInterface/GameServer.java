@@ -82,6 +82,7 @@ public class GameServer extends AbstractServer
   // When a message is received from a client, handle it.
   public void handleMessageFromClient(Object arg0, ConnectionToClient arg1)
   {
+	 int numConnections = 2;
 	 try {
 		database = new Database();
 	} catch (SQLException | IOException e1) {
@@ -150,33 +151,23 @@ public class GameServer extends AbstractServer
         return;
       }
     }
-    /*
-    else if (arg0 instanceof GameLobbyData)
-    {
-      // Try to create the account.
-      GameLobbyData data = (GameLobbyData)arg0;
-      Object result;
-      if (database.createNewAccount(data.getUsername(), data.getPassword()))
-      {
-        result = "CreateAccountSuccessful";
-        log.append("Client " + arg1.getId() + " created a new account called " + data.getUsername() + "\n");
-      }
-      else
-      {
-        result = new Error("The username is already in use.", "CreateAccount");
-        log.append("Client " + arg1.getId() + " failed to create a new account\n");
-      }
-      
-      // Send the result to the client.
-      try
-      {
-        arg1.sendToClient(result);
-      }
-      catch (IOException e)
-      {
-        return;
-      }
-    }*/
+    else if(arg0 instanceof GameLobbyData) {
+    	numConnections--;
+    	log.append("Client " + arg1.getId() + "is looking for a game");
+    	while(true) {
+    		if(numConnections == 0) {
+    			break;
+    		}
+    	}
+    	
+    	try {
+			arg1.sendToClient("Game Found");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    }
   }
 
   // Method that handles listening exceptions by displaying exception information.

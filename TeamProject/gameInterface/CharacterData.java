@@ -2,7 +2,7 @@ package gameInterface;
 
 import java.io.Serializable;
 
-public class CharacterSelectData implements Serializable{
+public class CharacterData implements Serializable{
 	private String character;
 
 	public String getCharacter() {
@@ -13,7 +13,7 @@ public class CharacterSelectData implements Serializable{
 		this.character = character;
 	} 
 	
-	public CharacterSelectData(String character) {
+	public CharacterData(String character) {
 		setCharacter(character);
 	}
 

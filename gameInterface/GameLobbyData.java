@@ -1,44 +1,22 @@
 package gameInterface;
 
-public class GameLobbyData {
-	  // Private data fields for the username and password.
-	  private String character;
-	  private String hp;
-	  private String attack;
-	  
-	  // Getters for the username and password.
-	  public String getCharacter()
-	  {
-	    return character;
-	  }
-	  public String getHp()
-	  {
-	    return hp;
-	  }
-	  
-	  public String getAttack() {
-		  return attack;
-	  }
-	  
-	  // Setters for the username and password.
-	  public void setCharacter(String character)
-	  {
-	    this.character = character;
-	  }
-	  public void setHp(String hp)
-	  {
-	    this.hp = hp;
-	  }
-	  
-	  public void setAttack(String attack) {
-		  this.attack = attack;
-	  }
+import java.io.Serializable;
+
+public class GameLobbyData implements Serializable {
+	private String playerNum;
+	
+	public void setPlayerNum(String playerNum) {
+		this.playerNum = playerNum;
+	}
+	
+	public String getPlayerNum() {
+		return playerNum;
+		
+	}
 	  
 	  // Constructor that initializes the username and password.
-	  public GameLobbyData(String character, String hp, String attack)
+	  public GameLobbyData(String playerNum)
 	  {
-	    setCharacter(character);
-	    setHp(hp);
-	    setAttack(attack);
+		  setPlayerNum(playerNum);
 	  }
 }

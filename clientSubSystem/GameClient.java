@@ -70,6 +70,14 @@ public class GameClient extends AbstractClient
       {
         gameLobbyControl.gameFound();
       }
+      else if (message.equals("CharacterSelected"))
+      {
+        characterSelectControl.CharacterSelectSuccess();
+      }
+      else if (message.equals("Finding Game"))
+      {
+        gameLobbyControl.gameFound();
+      }
     }
     
     // If we received an Error, figure out where to display it.

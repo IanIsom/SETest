@@ -20,6 +20,7 @@ public class GameServer extends AbstractServer
   private boolean running = false;
   private Database database; 
   private int numConnections; //UPDATE
+  private String username;
 
   // Constructor for initializing the server with default settings.
   public GameServer()
@@ -56,6 +57,14 @@ public class GameServer extends AbstractServer
     status.setText("Listening");
     status.setForeground(Color.GREEN);
     log.append("Server started\n");
+  }
+  
+  public void setUsername(String username) {
+	  this.username = username;
+  }
+
+  public String getUsername() {
+	  return username;
   }
   
   public void setnumConnections (int nc) {
@@ -103,13 +112,10 @@ public class GameServer extends AbstractServer
     // If we received LoginData, verify the account information.
     if (arg0 instanceof LoginData)
     {
-
-    	
       // Check the username and password with the database.
       LoginData data = (LoginData)arg0;
+      setUsername(data.getUsername());
       Object result;
-      
-
   	
       if (database.verifyAccount((String)data.getUsername(), data.getPassword()))
       {
@@ -117,7 +123,7 @@ public class GameServer extends AbstractServer
         result = "LoginSuccessful";
         log.append("Client " + arg1.getId() + " successfully logged in as " + data.getUsername() + "\n");
         //user successfully connected INCREMENT number of successful connections
-        log.append("Number of Users Connected: " + numConnections);
+        log.append("Number of Users Connected: " + numConnections + "\n");
       }
       else
       {
@@ -165,20 +171,28 @@ public class GameServer extends AbstractServer
         return;
       }
     }
-    else if(arg0 instanceof GameLobbyData) {
-    	log.append("Client " + arg1.getId() + "is looking for a game");
-    	while(true) {
-    		if(numConnections <= 1) {
-    			break;
-    		}
-    	}
+    else if(arg0 instanceof CharacterData) {
+    	
+    	CharacterData data = (CharacterData)arg0;
+    	log.append(getUsername() + " has selected the " + data.getCharacter() + " character\n");
+    	data.setUsername(getUsername());
     	
     	try {
-			arg1.sendToClient("Game Found");
+			arg1.sendToClient("CharacterSelected");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+    	
+    }
+    else if(arg0 instanceof GameLobbyData) {
+    	log.append(getUsername() + " is currently searching for a game");
+    	try {
+			arg1.sendToClient("Finding Game");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
     	
     }
   }

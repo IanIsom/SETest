@@ -20,6 +20,7 @@ public class GameServer extends AbstractServer
   private JLabel status;
   private boolean running = false;
   private Database database;
+  private String username;
 
   // Constructor for initializing the server with default settings.
   public GameServer()
@@ -78,7 +79,14 @@ public class GameServer extends AbstractServer
   {
     log.append("Client " + client.getId() + " connected\n");
   }
+  
+  public void setUsername(String username) {
+	  this.username = username;
+  }
 
+  public String getUsername() {
+	  return username;
+  }
   // When a message is received from a client, handle it.
   public void handleMessageFromClient(Object arg0, ConnectionToClient arg1)
   {
@@ -97,6 +105,7 @@ public class GameServer extends AbstractServer
     	
       // Check the username and password with the database.
       LoginData data = (LoginData)arg0;
+      setUsername(data.getUsername());
       Object result;
       
 
@@ -154,7 +163,8 @@ public class GameServer extends AbstractServer
     }
     else if(arg0 instanceof CharacterData) {
         CharacterData data = (CharacterData)arg0;
-    	log.append("Client " + arg1.getId() + " has selected the " + data.getCharacter() + " character\n");
+    	log.append(getUsername() + " has selected the " + data.getCharacter() + " character\n");
+    	data.setUsername(getUsername());
     	try {
 			arg1.sendToClient("CharacterSelected");
 		} catch (IOException e) {
@@ -163,7 +173,7 @@ public class GameServer extends AbstractServer
 		}
     }
     else if(arg0.equals("find game")) {
-    	log.append("Client " + arg1.getId() + " is looking for a game\n");
+    	log.append(getUsername() + " is looking for a game\n");
     	
     	try {
 			arg1.sendToClient("Game Found");

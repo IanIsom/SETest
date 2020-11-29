@@ -4,11 +4,15 @@ import java.io.Serializable;
 
 public class CharacterData implements Serializable{
 	  // Private data fields for the username and password.
+	  private String username;
 	  private String character;
 	  private String hp;
 	  private String attack;
 	  
-	  // Getters for the username and password.
+
+	  public String getUsername() {
+		  return username;
+	  }
 	  public String getCharacter()
 	  {
 	    return character;
@@ -22,7 +26,9 @@ public class CharacterData implements Serializable{
 		  return attack;
 	  }
 	  
-	  // Setters for the username and password.
+	  public void setUsername(String username) {
+		  this.username = username;
+	  }
 	  public void setCharacter(String character)
 	  {
 	    this.character = character;
@@ -37,8 +43,9 @@ public class CharacterData implements Serializable{
 	  }
 	  
 	  // Constructor that initializes the username and password.
-	  public CharacterData(String character, String hp, String attack)
+	  public CharacterData(String username, String character, String hp, String attack)
 	  {
+		setUsername(username);
 	    setCharacter(character);
 	    setHp(hp);
 	    setAttack(attack);

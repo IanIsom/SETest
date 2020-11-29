@@ -31,8 +31,6 @@ public class GameLobbyControl implements ActionListener{
 	    // The Cancel button takes the user back to the initial panel.
 	    if (command.equals("Find Games"))
 	    {
-	        GameLobbyPanel GameLobbyPanel = (GameLobbyPanel)container.getComponent(1);
-	        GameLobbyData data = new GameLobbyData();
 	    	try {
 				client.sendToServer("find game");
 			} catch (IOException e1) {

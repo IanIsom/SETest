@@ -82,13 +82,14 @@ public class GameServer extends AbstractServer
   // When a message is received from a client, handle it.
   public void handleMessageFromClient(Object arg0, ConnectionToClient arg1)
   {
-	 int numConnections = 2;
 	 try {
 		database = new Database();
 	} catch (SQLException | IOException e1) {
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
+	 
+	 System.out.println(arg0.toString());
     // If we received LoginData, verify the account information.
     if (arg0 instanceof LoginData)
     {
@@ -153,7 +154,7 @@ public class GameServer extends AbstractServer
     }
     else if(arg0 instanceof CharacterData) {
         CharacterData data = (CharacterData)arg0;
-    	log.append("Client " + arg1.getId() + "has selected the " + data.getCharacter() + " character");
+    	log.append("Client " + arg1.getId() + " has selected the " + data.getCharacter() + " character\n");
     	try {
 			arg1.sendToClient("CharacterSelected");
 		} catch (IOException e) {
@@ -161,14 +162,8 @@ public class GameServer extends AbstractServer
 			e.printStackTrace();
 		}
     }
-    else if(arg0 instanceof GameLobbyData) {
-    	numConnections--;
-    	log.append("Client " + arg1.getId() + "is looking for a game");
-    	while(true) {
-    		if(numConnections == 0) {
-    			break;
-    		}
-    	}
+    else if(arg0.equals("find game")) {
+    	log.append("Client " + arg1.getId() + " is looking for a game\n");
     	
     	try {
 			arg1.sendToClient("Game Found");

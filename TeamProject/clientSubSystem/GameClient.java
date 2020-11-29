@@ -75,12 +75,12 @@ public class GameClient extends AbstractClient
       {
         characterSelectControl.CharacterSelectSuccess();
       }
-      /*
+      
       else if (message.equals("Game Found"))
       {
         gameLobbyControl.gameFound();
       }
-      */
+      
     }
     
     

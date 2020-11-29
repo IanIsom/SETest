@@ -68,15 +68,16 @@ public class GameClient extends AbstractClient
       }
       else if (message.equals("Game Found"))
       {
+    	System.out.println("Hit Client!");
         gameLobbyControl.gameFound();
       }
       else if (message.equals("CharacterSelected"))
       {
         characterSelectControl.CharacterSelectSuccess();
       }
-      else if (message.equals("Finding Game"))
+      else if (message.equals("Finding Game")) 
       {
-        gameLobbyControl.gameFound();
+    	 
       }
     }
     

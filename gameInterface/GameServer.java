@@ -7,6 +7,8 @@ import clientSubSystem.CreateAccountData;
 import database.Database;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -21,6 +23,8 @@ public class GameServer extends AbstractServer
   private Database database; 
   private int numConnections; //UPDATE
   private String username;
+  public int numlookingForGame;
+  public ArrayList<ConnectionToClient> queue = new ArrayList<ConnectionToClient>();
 
   // Constructor for initializing the server with default settings.
   public GameServer()
@@ -97,7 +101,6 @@ public class GameServer extends AbstractServer
   {
     log.append("Client " + client.getId() + " connected\n");
     //if user connected number connections increases..
-    numConnections++;
   }
 
   // When a message is received from a client, handle it.
@@ -114,7 +117,7 @@ public class GameServer extends AbstractServer
     {
       // Check the username and password with the database.
       LoginData data = (LoginData)arg0;
-      setUsername(data.getUsername());
+      //setUsername(data.getUsername());
       Object result;
   	
       if (database.verifyAccount((String)data.getUsername(), data.getPassword()))
@@ -174,8 +177,8 @@ public class GameServer extends AbstractServer
     else if(arg0 instanceof CharacterData) {
     	
     	CharacterData data = (CharacterData)arg0;
-    	log.append(getUsername() + " has selected the " + data.getCharacter() + " character\n");
-    	data.setUsername(getUsername());
+    	log.append(arg1.getId() + " has selected the " + data.getCharacter() + " character\n");
+    	//data.setUsername(getUsername());
     	
     	try {
 			arg1.sendToClient("CharacterSelected");
@@ -186,16 +189,25 @@ public class GameServer extends AbstractServer
     	
     }
     else if(arg0 instanceof GameLobbyData) {
-    	log.append(getUsername() + " is currently searching for a game");
-    	try {
-			arg1.sendToClient("Finding Game");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+    	log.append(arg1.getId() + " is currently searching for a game");
     	
+    	numlookingForGame++;
+    	queue.add(arg1);
+    	
+    	if (getnumConnections() == 2) {
+    		System.out.println("Found a Match!");
+    		try {
+        		numlookingForGame -= 2;
+    			//arg1.sendToClient("Found Game");
+    			queue.get(0).sendToClient("Game Found");
+    			queue.get(1).sendToClient("Game Found");
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	}  
     }
-  }
+ 
 
   // Method that handles listening exceptions by displaying exception information.
   public void listeningException(Throwable exception) 

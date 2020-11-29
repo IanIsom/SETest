@@ -54,4 +54,8 @@ public class GameLobbyControl implements ActionListener{
 		gameLobbyPanel.setError(error);
 	}
 	
+	public void searching() {
+		
+	}
+	
 }

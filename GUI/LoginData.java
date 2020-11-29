@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class LoginData implements Serializable
 {
-	//private datafields
+	//private datafields 
+	//updATE
 	private String username;
 	private String password;
 	

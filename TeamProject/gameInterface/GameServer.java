@@ -8,6 +8,8 @@ import clientSubSystem.CreateAccountData;
 import database.Database;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -80,13 +82,24 @@ public class GameServer extends AbstractServer
   // When a message is received from a client, handle it.
   public void handleMessageFromClient(Object arg0, ConnectionToClient arg1)
   {
+	 try {
+		database = new Database();
+	} catch (SQLException | IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
     // If we received LoginData, verify the account information.
     if (arg0 instanceof LoginData)
     {
+
+    	
       // Check the username and password with the database.
       LoginData data = (LoginData)arg0;
       Object result;
-      if (database.verifyAccount(data.getUsername(), data.getPassword()))
+      
+
+  	
+      if (database.verifyAccount((String)data.getUsername(), data.getPassword()))
       {
         result = "LoginSuccessful";
         log.append("Client " + arg1.getId() + " successfully logged in as " + data.getUsername() + "\n");
@@ -96,6 +109,8 @@ public class GameServer extends AbstractServer
         result = new Error("The username and password are incorrect.", "Login");
         log.append("Client " + arg1.getId() + " failed to log in\n");
       }
+      
+      System.out.println("Result: " + result);
       
       // Send the result to the client.
       try

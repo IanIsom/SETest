@@ -52,31 +52,25 @@ public class LoginControl implements ActionListener
         displayError("You must enter a username and password.");
         return;
       }
+      else {
+    		try {
+				client.sendToServer(data);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+      }
       
-		try {
-			Database db = new Database();
-			if(!db.verifyAccount(data.getUsername(), data.getPassword())) {
-				displayError("Invalid Username or Password");
-			}
-			else {
-				loginSuccess();
-			}
-	
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+
+			
+
     }
   }
 
-  // After the login is successful, set the User object and display the contacts screen.
   public void loginSuccess()
   {
     LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
-    
     CardLayout cardLayout = (CardLayout)container.getLayout();
     cardLayout.show(container, "4");
   }

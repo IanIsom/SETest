@@ -26,6 +26,8 @@ public class Database
 	    String user = prop.getProperty("user");
 	    String pass = prop.getProperty("password"); 
 	    
+	    System.out.println("DATABASE RUNNING");
+	    
 	    conn = DriverManager.getConnection(url,user,pass);
 
 	}
@@ -66,7 +68,8 @@ public class Database
 	  
 	  // Method for verifying a username and password.
 	  public boolean verifyAccount(String username, String password)
-	  {		  
+	  {		
+		 
 		try {
 			ArrayList<String> verify = query("select username, aes_decrypt(password, 'key') from user");
 			String[] newVerify;

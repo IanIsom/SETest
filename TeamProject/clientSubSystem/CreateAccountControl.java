@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import GUI.CreateAccountPanel;
 import GUI.GameGUI;
+import GUI.LoginData;
 import database.Database;
 
 
@@ -48,6 +49,7 @@ public class CreateAccountControl implements ActionListener
       String username = createAccountPanel.getUsername();
       String password = createAccountPanel.getPassword();
       String passwordVerify = createAccountPanel.getPasswordVerify();
+      CreateAccountData data = new CreateAccountData(createAccountPanel.getUsername(), createAccountPanel.getPassword());
 
       // Check the validity of the information locally first.
       if (username.equals("") || password.equals(""))
@@ -60,7 +62,7 @@ public class CreateAccountControl implements ActionListener
         displayError("The two passwords did not match.");
         return;
       }
-      if (password.length() < 6)
+      else if (password.length() < 6)
       {
         displayError("The password must be at least 6 characters.");
         return;
@@ -68,19 +70,7 @@ public class CreateAccountControl implements ActionListener
       // Submit the new account information to the server.
 
       try {
-		Database db = new Database();
-
-		if(!db.createNewAccount(username, password)) {
-			displayError("Username already exists. Please Create a new username");
-		}
-		else {
-			displayError("");
-		     CardLayout cardLayout = (CardLayout)container.getLayout();
-		     cardLayout.show(container, "1");
-		}
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		client.sendToServer(data);
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -98,7 +88,7 @@ public class CreateAccountControl implements ActionListener
     GameGUI clientGUI = (GameGUI)SwingUtilities.getWindowAncestor(createAccountPanel);
     //clientGUI.setUser(new User(createAccountPanel.getUsername(), createAccountPanel.getPassword()));
     CardLayout cardLayout = (CardLayout)container.getLayout();
-    cardLayout.show(container, "4");
+    cardLayout.show(container, "1");
   }
   
   // Method that displays a message in the error label.

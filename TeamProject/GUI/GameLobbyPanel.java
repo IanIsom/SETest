@@ -1,5 +1,7 @@
 package GUI;
 
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 
@@ -21,6 +23,8 @@ public class GameLobbyPanel extends JPanel {
 		JButton findGameButton = new JButton("Find Games");
 		findGameButton.setBounds(107, 123, 115, 25);
 		add(findGameButton);
+		
+		findGameButton.addActionListener((ActionListener) gl);
 
 	}
 	

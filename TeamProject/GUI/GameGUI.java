@@ -11,6 +11,7 @@ import clientSubSystem.CreateAccountControl;
 import clientSubSystem.GameClient;
 import clientSubSystem.LoginControl;
 import gameInterface.CharacterSelectControl;
+import gameInterface.GameArenaControl;
 import gameInterface.GameLobbyControl;
 
 
@@ -50,11 +51,15 @@ public class GameGUI extends JFrame
     LoginControl lc = new LoginControl(container,client);
     CreateAccountControl cac = new CreateAccountControl(container,client);
     CharacterSelectControl cs = new CharacterSelectControl(container, client);
+    GameLobbyControl gl = new GameLobbyControl(container, client);
+    GameArenaControl ga = new GameArenaControl(container, client);
     
     //Set the client info
     client.setLoginControl(lc);
     client.setCreateAccountControl(cac);
     client.setCharacterSelectControl(cs);
+    client.setGameLobbyControl(gl);
+    client.setGameArenaControl(ga);
    
     
     // Create the four views. (need the controller to register with the Panels
@@ -62,12 +67,16 @@ public class GameGUI extends JFrame
     JPanel view2 = new LoginPanel(lc);
     JPanel view3 = new CreateAccountPanel(cac);
     JPanel view4 = new CharacterSelectPanel(cs);
+    JPanel view5 = new GameLobbyPanel(gl);
+    JPanel view6 = new GameArenaPanel(ga);
     
     // Add the views to the card layout container.
     container.add(view1, "1");
     container.add(view2, "2");
     container.add(view3, "3");
     container.add(view4, "4");
+    container.add(view5, "5");
+    container.add(view6, "6");
    
     
     // Show the initial view in the card layout.
@@ -79,7 +88,7 @@ public class GameGUI extends JFrame
     this.add(container);
 
     // Show the JFrame.
-    this.setSize(550, 350);
+    this.setSize(550, 550);
     this.setVisible(true);
   }
 

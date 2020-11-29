@@ -4,6 +4,8 @@ package clientSubSystem;
 import ocsf.client.AbstractClient;
 import gameInterface.CharacterSelectControl;
 import gameInterface.Error;
+import gameInterface.GameArenaControl;
+import gameInterface.GameLobbyControl;
 
 public class GameClient extends AbstractClient
 {
@@ -11,6 +13,8 @@ public class GameClient extends AbstractClient
   private LoginControl loginControl;
   private CreateAccountControl createAccountControl;
   private CharacterSelectControl characterSelectControl;
+  private GameLobbyControl gameLobbyControl;
+  private GameArenaControl gameArenaControl;
 
   // Setters for the GUI controllers.
   public void setLoginControl(LoginControl loginControl)
@@ -25,6 +29,16 @@ public class GameClient extends AbstractClient
   public void setCharacterSelectControl(CharacterSelectControl characterSelectControl) {
 	  this.characterSelectControl = characterSelectControl;
   }
+  
+  public void setGameLobbyControl(GameLobbyControl gameLobbyControl) {
+	  this.gameLobbyControl = gameLobbyControl;
+  }
+  
+  public void setGameArenaControl(GameArenaControl gameArenaControl) {
+	  this.gameArenaControl = gameArenaControl;
+  }
+
+
 
   // Constructor for initializing the client with default settings.
   public GameClient()

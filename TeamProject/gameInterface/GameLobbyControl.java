@@ -26,10 +26,10 @@ public class GameLobbyControl implements ActionListener{
 	    String command = e.getActionCommand();
 
 	    // The Cancel button takes the user back to the initial panel.
-	    if (command == "Find Games")
+	    if (command.equals("Find Games"))
 	    {
 	      CardLayout cardLayout = (CardLayout)container.getLayout();
-	      cardLayout.show(container, "1");
+	      cardLayout.show(container, "6");
 	    }
 		
 		

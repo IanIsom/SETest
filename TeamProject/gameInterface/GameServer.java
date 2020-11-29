@@ -151,6 +151,16 @@ public class GameServer extends AbstractServer
         return;
       }
     }
+    else if(arg0 instanceof CharacterData) {
+        CharacterData data = (CharacterData)arg0;
+    	log.append("Client " + arg1.getId() + "has selected the " + data.getCharacter() + " character");
+    	try {
+			arg1.sendToClient("CharacterSelected");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
     else if(arg0 instanceof GameLobbyData) {
     	numConnections--;
     	log.append("Client " + arg1.getId() + "is looking for a game");

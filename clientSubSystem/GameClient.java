@@ -2,10 +2,9 @@ package clientSubSystem;
 
 
 import ocsf.client.AbstractClient;
-import gameInterface.CharacterSelectControl;
+import gameInterface.*;
 import gameInterface.Error;
-import gameInterface.GameArenaControl;
-import gameInterface.GameLobbyControl;
+
 
 public class GameClient extends AbstractClient
 {
@@ -14,7 +13,8 @@ public class GameClient extends AbstractClient
   private CreateAccountControl createAccountControl;
   private CharacterSelectControl characterSelectControl;
   private GameLobbyControl gameLobbyControl;
-  private GameArenaControl gameArenaControl;
+  private P1GameArenaControl gameArenaControl1;
+  private P2GameArenaControl gameArenaControl2;
 
   // Setters for the GUI controllers.
   public void setLoginControl(LoginControl loginControl)
@@ -34,8 +34,11 @@ public class GameClient extends AbstractClient
 	  this.gameLobbyControl = gameLobbyControl;
   }
   
-  public void setGameArenaControl(GameArenaControl gameArenaControl) {
-	  this.gameArenaControl = gameArenaControl;
+  public void setGameArenaControl1(P1GameArenaControl gameArenaControl1) {
+	  this.gameArenaControl1 = gameArenaControl1;
+  }
+  public void setGameArenaControl2(P2GameArenaControl gameArenaControl2) {
+	  this.gameArenaControl2 = gameArenaControl2;
   }
 
 
@@ -66,18 +69,17 @@ public class GameClient extends AbstractClient
       {
         createAccountControl.createAccountSuccess();
       }
-      else if (message.equals("Game Found"))
+      else if (message.equals("Player1 Found"))
       {
-    	System.out.println("Hit Client!");
-        gameLobbyControl.gameFound();
+        gameLobbyControl.p1Found();
+      }
+      else if (message.equals("Player2 Found"))
+      {
+        gameLobbyControl.p2Found();
       }
       else if (message.equals("CharacterSelected"))
       {
         characterSelectControl.CharacterSelectSuccess();
-      }
-      else if (message.equals("Finding Game")) 
-      {
-    	 
       }
     }
     

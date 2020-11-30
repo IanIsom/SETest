@@ -43,10 +43,15 @@ public class GameLobbyControl implements ActionListener{
 		
 	}
 	
-	  public void gameFound()
+	  public void p1Found()
 	  {
 	    CardLayout cardLayout = (CardLayout)container.getLayout();
 	    cardLayout.show(container, "6");
+	  }
+	  public void p2Found()
+	  {
+	    CardLayout cardLayout = (CardLayout)container.getLayout();
+	    cardLayout.show(container, "7");
 	  }
 	  
 	public void displayError(String error) {

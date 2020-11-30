@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import GUI.GameArenaPanel;
+import GUI.P1GameArenaPanel;
 import clientSubSystem.GameClient;
 
-public class GameArenaControl implements ActionListener{
+public class P1GameArenaControl implements ActionListener{
 
 	private JPanel container;
 	private GameClient client;
 	
-	public GameArenaControl(JPanel container, GameClient client) {
+	public P1GameArenaControl(JPanel container, GameClient client) {
 		this.container = container;
 		this.client = client; 
 	}
@@ -26,7 +26,7 @@ public class GameArenaControl implements ActionListener{
 	
 	
 	public void displayError(String error) {
-		GameArenaPanel gameArenaPanel = (GameArenaPanel)container.getComponent(2); //change the int value later
+		P1GameArenaPanel gameArenaPanel = (P1GameArenaPanel)container.getComponent(2); //change the int value later
 		gameArenaPanel.setError(error);
 	}
 	

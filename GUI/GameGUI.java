@@ -1,18 +1,11 @@
 package GUI;
 
-import java.awt.CardLayout;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.io.IOException;
+import javax.swing.*;
+import clientSubSystem.*;
+import gameInterface.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import clientSubSystem.CreateAccountControl;
-import clientSubSystem.GameClient;
-import clientSubSystem.LoginControl;
-import gameInterface.CharacterSelectControl;
-import gameInterface.GameArenaControl;
-import gameInterface.GameLobbyControl;
 
 
 public class GameGUI extends JFrame
@@ -52,14 +45,16 @@ public class GameGUI extends JFrame
     CreateAccountControl cac = new CreateAccountControl(container,client);
     CharacterSelectControl cs = new CharacterSelectControl(container, client);
     GameLobbyControl gl = new GameLobbyControl(container, client);
-    GameArenaControl ga = new GameArenaControl(container, client);
+    P1GameArenaControl ga1 = new P1GameArenaControl(container, client);
+    P2GameArenaControl ga2 = new P2GameArenaControl(container, client);
     
     //Set the client info
     client.setLoginControl(lc);
     client.setCreateAccountControl(cac);
     client.setCharacterSelectControl(cs);
     client.setGameLobbyControl(gl);
-    client.setGameArenaControl(ga);
+    client.setGameArenaControl1(ga1);
+    client.setGameArenaControl2(ga2);
    
     
     // Create the four views. (need the controller to register with the Panels
@@ -68,7 +63,8 @@ public class GameGUI extends JFrame
     JPanel view3 = new CreateAccountPanel(cac);
     JPanel view4 = new CharacterSelectPanel(cs);
     JPanel view5 = new GameLobbyPanel(gl);
-    JPanel view6 = new GameArenaPanel(ga);
+    JPanel view6 = new P1GameArenaPanel(ga1);
+    JPanel view7 = new P2GameArenaPanel(ga1);
     
     // Add the views to the card layout container.
     container.add(view1, "1");
@@ -77,6 +73,7 @@ public class GameGUI extends JFrame
     container.add(view4, "4");
     container.add(view5, "5");
     container.add(view6, "6");
+    container.add(view7, "7");
    
     
     // Show the initial view in the card layout.

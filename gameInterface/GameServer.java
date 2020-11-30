@@ -22,7 +22,6 @@ public class GameServer extends AbstractServer
   private boolean running = false;
   private Database database; 
   private int numConnections; //UPDATE
-  private String username;
   public int numlookingForGame;
   public ArrayList<ConnectionToClient> queue = new ArrayList<ConnectionToClient>();
 
@@ -61,14 +60,6 @@ public class GameServer extends AbstractServer
     status.setText("Listening");
     status.setForeground(Color.GREEN);
     log.append("Server started\n");
-  }
-  
-  public void setUsername(String username) {
-	  this.username = username;
-  }
-
-  public String getUsername() {
-	  return username;
   }
   
   public void setnumConnections (int nc) {
@@ -189,18 +180,20 @@ public class GameServer extends AbstractServer
     	
     }
     else if(arg0 instanceof GameLobbyData) {
-    	log.append(arg1.getId() + " is currently searching for a game");
+    	log.append(arg1.getId() + " is currently searching for a game\n");
     	
     	numlookingForGame++;
     	queue.add(arg1);
     	
-    	if (getnumConnections() == 2) {
+    	if (queue.size() >= 2) {
     		System.out.println("Found a Match!");
     		try {
         		numlookingForGame -= 2;
-    			//arg1.sendToClient("Found Game");
-    			queue.get(0).sendToClient("Game Found");
-    			queue.get(1).sendToClient("Game Found");
+        		
+            	log.append(queue.get(0).getId() + " and " + queue.get(1).getId() + " have connected and are in a game\n");
+            	
+    			queue.get(0).sendToClient("Player1 Found");
+    			queue.get(1).sendToClient("Player2 Found");
     		} catch (IOException e) {
     			e.printStackTrace();
     		}

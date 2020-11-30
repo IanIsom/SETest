@@ -1,6 +1,6 @@
 package gameInterface;
 
-public class GameArenaData {
+public class P1GameArenaData {
 	
 
 }

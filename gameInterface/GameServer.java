@@ -211,6 +211,7 @@ public class GameServer extends AbstractServer
             	queue.get(1).sendToClient(charSelected);
     			queue.get(0).sendToClient("Player1 Found");
     			queue.get(1).sendToClient("Player2 Found");
+    			gameActive = true;
     		} catch (IOException e) {
     			e.printStackTrace();
     		}
@@ -236,6 +237,7 @@ public class GameServer extends AbstractServer
 		
 		while (gameActive == true) {
 			// if Player 1 Attacks Player 2
+		
 			if (charSelected.get(0).getTurn() == true) {
 				//random number 0-Attack
 				double dmg = Math.random() * ( max  - min + 1) + min;
@@ -281,7 +283,51 @@ public class GameServer extends AbstractServer
     else if(arg0.equals("Defend")) {
     	System.out.println("DEFEND");
 
-    	
+    	int min = 0;
+    	int max = charSelected.get(0).getAttack();
+    	int max2 = charSelected.get(1).getAttack();
+
+    	while (gameActive == true) {
+
+    		// if Player 1 Attacks Player 2 defends
+    		if (charSelected.get(0).getTurn() == true) {
+    			//random number 0-Attack
+    			double dmg = (Math.random() * ( max  - min + 1) + min)/2;
+
+    			//tell the log that he did action and dmg
+    			log.append(arg1.getId() + " has attacked Player 2 for  " + dmg + " but it was reduced due to block!\n");
+
+
+    			//send dmg to receiving client
+    			charSelected.get(1).setHp(dmg);
+
+    			//player1 turn is up
+    			charSelected.get(0).setTurn(false);
+    		}
+
+    		if (charSelected.get(1).getTurn() == true) {
+    			//random number 0-Attack
+    			double dmg = Math.random() * ( max2  - min + 1) + min;
+
+    			//tell the log that he did action and dmg
+    			log.append(((Thread) arg0).getId() + " has attacked Player 1 for  " + dmg + " but it was reduced due to block!\n");
+
+
+    			//send dmg to receiving client
+    			charSelected.get(0).setHp(dmg);
+
+    			//player2 turn is up
+    			charSelected.get(1).setTurn(false);
+    		}
+
+    		if (charSelected.get(0).getTurn() && charSelected.get(1).getTurn() == false) {
+    			turnCount++; //after both players send input turn count++
+
+    			//set both players to can attack to true
+    			charSelected.get(0).setTurn(true);
+    			charSelected.get(1).setTurn(true);
+    		}
+    	}
     } 
   }
 

@@ -1,9 +1,12 @@
 package clientSubSystem;
 
 
-import ocsf.client.AbstractClient;
-import gameInterface.*;
+import gameInterface.CharacterSelectControl;
 import gameInterface.Error;
+import gameInterface.GameLobbyControl;
+import gameInterface.P1GameArenaControl;
+import gameInterface.P2GameArenaControl;
+import ocsf.client.AbstractClient;
 
 
 public class GameClient extends AbstractClient

@@ -17,7 +17,6 @@ public class LoginControl implements ActionListener
   // Private data fields for the container and chat client.
   private JPanel container;
   private GameClient client;
-  private Database db;
   
   // Constructor for the login controller.
   public LoginControl(JPanel container, GameClient client)

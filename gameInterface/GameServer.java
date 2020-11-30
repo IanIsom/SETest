@@ -169,10 +169,9 @@ public class GameServer extends AbstractServer
     	
     	CharacterData data = (CharacterData)arg0;
     	log.append(arg1.getId() + " has selected the " + data.getCharacter() + " character\n");
-    	//data.setUsername(getUsername());
     	
     	try {
-			arg1.sendToClient("CharacterSelected");
+			arg1.sendToClient(data);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -198,6 +197,12 @@ public class GameServer extends AbstractServer
     			e.printStackTrace();
     		}
     	}
+    	try {
+			arg1.sendToClient("Finding");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
     	}  
     }
  

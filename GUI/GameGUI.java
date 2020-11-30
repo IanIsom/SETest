@@ -64,7 +64,7 @@ public class GameGUI extends JFrame
     JPanel view4 = new CharacterSelectPanel(cs);
     JPanel view5 = new GameLobbyPanel(gl);
     JPanel view6 = new P1GameArenaPanel(ga1);
-    JPanel view7 = new P2GameArenaPanel(ga1);
+    JPanel view7 = new P2GameArenaPanel(ga2);
     
     // Add the views to the card layout container.
     container.add(view1, "1");
@@ -85,7 +85,7 @@ public class GameGUI extends JFrame
     this.add(container);
 
     // Show the JFrame.
-    this.setSize(550, 550);
+    this.setSize(800, 550);
     this.setVisible(true);
   }
 

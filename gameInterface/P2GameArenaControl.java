@@ -25,10 +25,6 @@ public class P2GameArenaControl implements ActionListener{
 	}
 	
 	
-	public void displayError(String error) {
-		P1GameArenaPanel gameArenaPanel = (P1GameArenaPanel)container.getComponent(2); //change the int value later
-		gameArenaPanel.setError(error);
-	}
 	
 	
 }

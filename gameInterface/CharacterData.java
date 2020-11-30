@@ -17,11 +17,11 @@ public class CharacterData implements Serializable{
 	}
 	
 	public String getHp() {
-		return character;
+		return hp;
 	}
 	
 	public String getAttack() {
-		return character;
+		return attack;
 	}
 	
 	public void setUsername(String username) {

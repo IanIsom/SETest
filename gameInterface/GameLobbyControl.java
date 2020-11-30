@@ -1,16 +1,11 @@
 package gameInterface;
 
-import java.awt.CardLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
 import javax.swing.JPanel;
-
-import GUI.CharacterSelectPanel;
-import GUI.GameLobbyPanel;
-import GUI.LoginData;
-import GUI.LoginPanel;
+import GUI.*;
 import clientSubSystem.GameClient;
 
 public class GameLobbyControl implements ActionListener{
@@ -43,24 +38,35 @@ public class GameLobbyControl implements ActionListener{
 		
 	}
 	
-	  public void p1Found()
+	  public void p1Found(CharacterData data)
 	  {
+		P1GameArenaPanel p1 = (P1GameArenaPanel)container.getComponent(5);
+		
+		System.out.println(data.getHp());
+		p1.setChar1(data.getCharacter());
+		p1.setHp1(data.getHp());
+
+		
 	    CardLayout cardLayout = (CardLayout)container.getLayout();
 	    cardLayout.show(container, "6");
 	  }
-	  public void p2Found()
+	  public void p2Found(CharacterData data)
 	  {
+		P2GameArenaPanel p2 = (P2GameArenaPanel)container.getComponent(6);
+		
+		System.out.println(data.getHp());
+		p2.setChar2(data.getCharacter());
+		p2.setHp2(data.getHp());
+
+		
 	    CardLayout cardLayout = (CardLayout)container.getLayout();
 	    cardLayout.show(container, "7");
 	  }
 	  
-	public void displayError(String error) {
-		GameLobbyPanel gameLobbyPanel = (GameLobbyPanel)container.getComponent(2);
-		gameLobbyPanel.setError(error);
-	}
-	
-	public void searching() {
-		
-	}
+	  public void finding() {
+		    GameLobbyPanel gLobby = (GameLobbyPanel)container.getComponent(4);
+		    gLobby.setFinding("Searching For Game...");
+	  }
+
 	
 }

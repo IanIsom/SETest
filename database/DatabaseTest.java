@@ -22,7 +22,6 @@ public class DatabaseTest {
 	private int rando; 
 
 	
-	
 	@Before
 	public void setUp() throws Exception
 	{

@@ -11,6 +11,24 @@ public class P2GameArenaPanel extends JPanel {
 	private JLabel hp1Indicator;
 	private JLabel characterTwo;
 	private JLabel characterOne;
+	
+	
+	public void setHp1(String hp) {
+		hp1Indicator.setText(hp);
+	}
+	
+	public void setHp2(String hp) {
+		hp2Indicator.setText(hp);
+	}
+	
+	public void setChar1(String character1) {
+		characterOne.setText(character1);
+	}
+	
+	public void setChar2(String character2) {
+		characterTwo.setText(character2);
+	}
+	
 
 	public P2GameArenaPanel(P2GameArenaControl ga2) {
 		setLayout(new GridLayout(0, 5, 0, 0));
@@ -103,22 +121,6 @@ public class P2GameArenaPanel extends JPanel {
 		JButton quitButton = new JButton("Quit Game");
 		panel_12.add(quitButton);
 	}
-	
-	public void setHp1(String hp) {
-		hp1Indicator.setText(hp);
-	}
-	
-	public void setHp2(String hp) {
-		hp2Indicator.setText(hp);
-	}
-	
-	public void setChar1(String character1) {
-		characterOne.setText(character1);
-	}
-	
-	public void setChar2(String character2) {
-		characterTwo.setText(character2);
-	}
-	
+
 	
 }

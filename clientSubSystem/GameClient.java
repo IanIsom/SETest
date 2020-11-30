@@ -2,6 +2,9 @@ package clientSubSystem;
 
 
 import ocsf.client.AbstractClient;
+
+import java.util.ArrayList;
+
 import gameInterface.*;
 import gameInterface.CharacterData;
 import gameInterface.Error;
@@ -14,9 +17,6 @@ public class GameClient extends AbstractClient
   private CreateAccountControl createAccountControl;
   private CharacterSelectControl characterSelectControl;
   private GameLobbyControl gameLobbyControl;
-  private P1GameArenaControl gameArenaControl1;
-  private P2GameArenaControl gameArenaControl2;
-  
   private CharacterData data;
 
 
@@ -36,13 +36,6 @@ public class GameClient extends AbstractClient
   
   public void setGameLobbyControl(GameLobbyControl gameLobbyControl) {
 	  this.gameLobbyControl = gameLobbyControl;
-  }
-  
-  public void setGameArenaControl1(P1GameArenaControl gameArenaControl1) {
-	  this.gameArenaControl1 = gameArenaControl1;
-  }
-  public void setGameArenaControl2(P2GameArenaControl gameArenaControl2) {
-	  this.gameArenaControl2 = gameArenaControl2;
   }
 
 
@@ -75,12 +68,12 @@ public class GameClient extends AbstractClient
       }
       else if (message.equals("Player1 Found"))
       {
-        gameLobbyControl.p1Found(data);
+        gameLobbyControl.p1Found();
         
       }
       else if (message.equals("Player2 Found"))
       {
-        gameLobbyControl.p2Found(data);
+        gameLobbyControl.p2Found();
       }
       
       else if (message.equals("Finding"))
@@ -108,15 +101,20 @@ public class GameClient extends AbstractClient
       }
     }
     else if(arg0 instanceof CharacterData) {
-    	setData((CharacterData)arg0);
     	characterSelectControl.CharacterSelectSuccess();
   
     }
-  }
+    else if(arg0 instanceof ArrayList) {
+    	gameLobbyControl.setData((ArrayList<CharacterData>) arg0);
   
+    }
+  }
   public void setData(CharacterData data) {
 	  this.data = data;
+	  
   }
+
+  
 }
 
 

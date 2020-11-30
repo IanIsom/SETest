@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import gameInterface.P1GameArenaControl;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 public class P1GameArenaPanel extends JPanel {
 	
@@ -11,6 +12,23 @@ public class P1GameArenaPanel extends JPanel {
 	private JLabel hp1Indicator;
 	private JLabel characterTwo;
 	private JLabel characterOne;
+	
+	
+	public void setHp1(String hp) {
+		hp1Indicator.setText(hp);
+	}
+	
+	public void setHp2(String hp) {
+		hp2Indicator.setText(hp);
+	}
+	
+	public void setChar1(String character1) {
+		characterOne.setText(character1);
+	}
+	
+	public void setChar2(String character2) {
+		characterTwo.setText(character2);
+	}
 
 	public P1GameArenaPanel(P1GameArenaControl ga1) {
 		setLayout(new GridLayout(0, 5, 0, 0));
@@ -84,9 +102,11 @@ public class P1GameArenaPanel extends JPanel {
 				//Player 1 Buttons----------------------------------------------
 		JButton attackButton = new JButton("Attack");
 		panel_6.add(attackButton);
+		attackButton.addActionListener((ActionListener) ga1);
 				
 		JButton defendButton = new JButton("Defend");
 		panel_6.add(defendButton);
+		defendButton.addActionListener((ActionListener) ga1);
 				
 		JPanel panel_9 = new JPanel();
 		add(panel_9);
@@ -102,22 +122,7 @@ public class P1GameArenaPanel extends JPanel {
 				
 		JButton quitButton = new JButton("Quit Game");
 		panel_12.add(quitButton);
-	}
-	
-	public void setHp1(String hp) {
-		hp1Indicator.setText(hp);
-	}
-	
-	public void setHp2(String hp) {
-		hp2Indicator.setText(hp);
-	}
-	
-	public void setChar1(String character1) {
-		characterOne.setText(character1);
-	}
-	
-	public void setChar2(String character2) {
-		characterTwo.setText(character2);
+		quitButton.addActionListener((ActionListener) ga1);
 	}
 	
 	

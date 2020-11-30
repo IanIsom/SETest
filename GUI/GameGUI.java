@@ -53,8 +53,8 @@ public class GameGUI extends JFrame
     client.setCreateAccountControl(cac);
     client.setCharacterSelectControl(cs);
     client.setGameLobbyControl(gl);
-    client.setGameArenaControl1(ga1);
-    client.setGameArenaControl2(ga2);
+    //client.setGameArenaControl1(ga1);
+    //client.setGameArenaControl2(ga2);
    
     
     // Create the four views. (need the controller to register with the Panels

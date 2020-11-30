@@ -24,6 +24,8 @@ public class GameServer extends AbstractServer
   private int numConnections; //UPDATE
   public int numlookingForGame;
   public ArrayList<ConnectionToClient> queue = new ArrayList<ConnectionToClient>();
+  public ArrayList<CharacterData> charSelected = new ArrayList<CharacterData>();
+  
 
   // Constructor for initializing the server with default settings.
   public GameServer()
@@ -103,6 +105,7 @@ public class GameServer extends AbstractServer
 		// TODO Auto-generated catch block
 		e1.printStackTrace();
 	}
+	 
     // If we received LoginData, verify the account information.
     if (arg0 instanceof LoginData)
     {
@@ -124,8 +127,6 @@ public class GameServer extends AbstractServer
         result = new Error("The username and password are incorrect.", "Login");
         log.append("Client " + arg1.getId() + " failed to log in\n");
       }
-      
-      System.out.println("Result: " + result);
       
       // Send the result to the client.
       try
@@ -168,10 +169,15 @@ public class GameServer extends AbstractServer
     else if(arg0 instanceof CharacterData) {
     	
     	CharacterData data = (CharacterData)arg0;
+    	
+    	charSelected.add(data);
+    	
+    	System.out.println("SIZE OF CHARACTER LIST: " + charSelected.size());
+    	
     	log.append(arg1.getId() + " has selected the " + data.getCharacter() + " character\n");
     	
     	try {
-			arg1.sendToClient(data);
+			arg1.sendToClient(arg0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -190,7 +196,8 @@ public class GameServer extends AbstractServer
         		numlookingForGame -= 2;
         		
             	log.append(queue.get(0).getId() + " and " + queue.get(1).getId() + " have connected and are in a game\n");
-            	
+            	queue.get(0).sendToClient(charSelected);
+            	queue.get(1).sendToClient(charSelected);
     			queue.get(0).sendToClient("Player1 Found");
     			queue.get(1).sendToClient("Player2 Found");
     		} catch (IOException e) {
@@ -204,6 +211,17 @@ public class GameServer extends AbstractServer
 			e1.printStackTrace();
 		}
     	}  
+    else if(arg0.equals("Player 1 Quit")) {
+    		System.out.println("PLAYER QUIT");
+    	} 
+    
+    else if(arg0.equals("Attack")) {
+		System.out.println("ATTACK");
+	} 
+    
+    else if(arg0.equals("Defend")) {
+		System.out.println("DEFEND");
+	} 
     }
  
 

@@ -81,6 +81,10 @@ public class GameClient extends AbstractClient
       {
         characterSelectControl.CharacterSelectSuccess();
       }
+      else if (message.equals("Finding"))
+      {
+        gameLobbyControl.finding();
+      }
     }
     
     // If we received an Error, figure out where to display it.

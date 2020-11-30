@@ -198,6 +198,12 @@ public class GameServer extends AbstractServer
     			e.printStackTrace();
     		}
     	}
+    	try {
+			arg1.sendToClient("Finding");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
     	}  
     }
  

@@ -54,13 +54,11 @@ public class GameLobbyControl implements ActionListener{
 	    cardLayout.show(container, "7");
 	  }
 	  
-	public void displayError(String error) {
-		GameLobbyPanel gameLobbyPanel = (GameLobbyPanel)container.getComponent(2);
-		gameLobbyPanel.setError(error);
-	}
-	
-	public void searching() {
-		
-	}
+	  public void finding() {
+		  System.out.println("Searching For Game...");
+		    GameLobbyPanel gLobby = (GameLobbyPanel)container.getComponent(4);
+		    gLobby.setFinding("Searching For Game...");
+	  }
+
 	
 }

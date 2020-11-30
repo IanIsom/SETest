@@ -1,6 +1,8 @@
 package clientSubSystem;
 
 
+import gameInterface.CharacterSelectControl;
+
 import ocsf.client.AbstractClient;
 
 import java.util.ArrayList;
@@ -8,6 +10,10 @@ import java.util.ArrayList;
 import gameInterface.*;
 import gameInterface.CharacterData;
 import gameInterface.Error;
+import gameInterface.GameLobbyControl;
+import gameInterface.P1GameArenaControl;
+import gameInterface.P2GameArenaControl;
+import ocsf.client.AbstractClient;
 
 
 public class GameClient extends AbstractClient

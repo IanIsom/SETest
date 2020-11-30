@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.swing.*;
+import ocsf.client.AbstractClient;
 
 import GUI.CreateAccountPanel;
 import GUI.GameGUI;

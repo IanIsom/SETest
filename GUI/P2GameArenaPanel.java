@@ -28,9 +28,9 @@ public class P2GameArenaPanel extends JPanel {
 		panel.add(hp1Label);
 		hp1Label.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel hp2Indicator_1 = new JLabel("0");
-		panel.add(hp2Indicator_1);
-		hp2Indicator_1.setHorizontalAlignment(SwingConstants.CENTER);
+		hp2Indicator = new JLabel("0");
+		panel.add(hp2Indicator);
+		hp2Indicator.setHorizontalAlignment(SwingConstants.CENTER);
 						
 		JPanel panel_14 = new JPanel();
 		add(panel_14);
@@ -53,15 +53,15 @@ public class P2GameArenaPanel extends JPanel {
 		panel_7.add(hp2Label);
 		hp2Label.setHorizontalAlignment(SwingConstants.CENTER);
 				
-		JLabel hp1Indicator_1 = new JLabel("0");
-		panel_7.add(hp1Indicator_1);
-		hp1Indicator_1.setHorizontalAlignment(SwingConstants.CENTER);
+		hp1Indicator = new JLabel("0");
+		panel_7.add(hp1Indicator);
+		hp1Indicator.setHorizontalAlignment(SwingConstants.CENTER);
 				
 		JPanel panel_8 = new JPanel();
 		add(panel_8);
 				
-		JLabel characterTwo_1 = new JLabel("Character 2 Goes Here");
-		panel_8.add(characterTwo_1);
+		characterTwo = new JLabel("Character 2 Goes Here");
+		panel_8.add(characterTwo);
 				
 		JPanel panel_1 = new JPanel();
 		add(panel_1);
@@ -75,8 +75,8 @@ public class P2GameArenaPanel extends JPanel {
 		JPanel panel_3 = new JPanel();
 		add(panel_3);
 				
-		JLabel characterOne_1 = new JLabel("Character1 Goes Here");
-		panel_3.add(characterOne_1);
+		characterOne = new JLabel("Character1 Goes Here");
+		panel_3.add(characterOne);
 				
 		JPanel panel_6 = new JPanel();
 		add(panel_6);

@@ -3,6 +3,7 @@ package clientSubSystem;
 
 import ocsf.client.AbstractClient;
 import gameInterface.*;
+import gameInterface.CharacterData;
 import gameInterface.Error;
 
 
@@ -15,6 +16,9 @@ public class GameClient extends AbstractClient
   private GameLobbyControl gameLobbyControl;
   private P1GameArenaControl gameArenaControl1;
   private P2GameArenaControl gameArenaControl2;
+  
+  private CharacterData data;
+
 
   // Setters for the GUI controllers.
   public void setLoginControl(LoginControl loginControl)
@@ -71,16 +75,14 @@ public class GameClient extends AbstractClient
       }
       else if (message.equals("Player1 Found"))
       {
-        gameLobbyControl.p1Found();
+        gameLobbyControl.p1Found(data);
+        
       }
       else if (message.equals("Player2 Found"))
       {
-        gameLobbyControl.p2Found();
+        gameLobbyControl.p2Found(data);
       }
-      else if (message.equals("CharacterSelected"))
-      {
-        characterSelectControl.CharacterSelectSuccess();
-      }
+      
       else if (message.equals("Finding"))
       {
         gameLobbyControl.finding();
@@ -105,7 +107,16 @@ public class GameClient extends AbstractClient
         createAccountControl.displayError(error.getMessage());
       }
     }
-  }  
+    else if(arg0 instanceof CharacterData) {
+    	setData((CharacterData)arg0);
+    	characterSelectControl.CharacterSelectSuccess();
+  
+    }
+  }
+  
+  public void setData(CharacterData data) {
+	  this.data = data;
+  }
 }
 
 

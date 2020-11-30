@@ -25,6 +25,8 @@ public class GameServer extends AbstractServer
   public int numlookingForGame;
   public ArrayList<ConnectionToClient> queue = new ArrayList<ConnectionToClient>();
   public ArrayList<CharacterData> charSelected = new ArrayList<CharacterData>();
+  private boolean gameActive;
+  private int turnCount;
   
 
   // Constructor for initializing the server with default settings.
@@ -32,9 +34,18 @@ public class GameServer extends AbstractServer
   {
     super(12345);
     this.setTimeout(500);
+    this.setturnCount(0); //set the game rounds to be 0
   }
 
-  // Getter that returns whether the server is currently running.
+  private void setturnCount(int t) {
+	// TODO Auto-generated method stub
+	this.turnCount = t;
+}
+  public int getturnCount() {
+	  return turnCount;
+  }
+
+// Getter that returns whether the server is currently running.
   public boolean isRunning()
   {
     return running;
@@ -216,14 +227,64 @@ public class GameServer extends AbstractServer
     	} 
     
     else if(arg0.equals("Attack")) {
-		System.out.println("ATTACK");
-	} 
-    
+    	System.out.println("ATTACK");
+    	
+    	//high and low
+		int min = 0;
+		int max = charSelected.get(0).getAttack();
+		int max2 = charSelected.get(1).getAttack();
+		
+		while (gameActive == true) {
+			// if Player 1 Attacks Player 2
+			if (charSelected.get(0).getTurn() == true) {
+				//random number 0-Attack
+				double dmg = Math.random() * ( max  - min + 1) + min;
+
+				//tell the log that he did action and dmg
+				log.append(arg1.getId() + " has attacked Player 2 for " + dmg + "\n");
+
+
+				//send dmg to receiving client
+				charSelected.get(1).setHp(dmg);
+
+				//player1 turn is up
+				charSelected.get(0).setTurn(false);
+			}
+
+			if (charSelected.get(1).getTurn() == true) {
+				//random number 0-Attack
+				double dmg = Math.random() * ( max2  - min + 1) + min;
+
+				//tell the log that he did action and dmg
+				log.append(((Thread) arg0).getId() + " has attacked Player 1 for " + dmg + "\n");
+
+
+				//send dmg to receiving client
+				charSelected.get(0).setHp(dmg);
+
+				//player2 turn is up
+				charSelected.get(1).setTurn(false);
+			}
+			
+			
+			//both players have to make a choice
+			if (charSelected.get(0).getTurn() && charSelected.get(1).getTurn() == false) {
+				turnCount++; //after both players send input turn count++
+				
+				//set both players to can attack to true
+				charSelected.get(0).setTurn(true);
+				charSelected.get(1).setTurn(true);
+			}
+		}
+    } 
+
     else if(arg0.equals("Defend")) {
-		System.out.println("DEFEND");
-	} 
-    }
- 
+    	System.out.println("DEFEND");
+
+    	
+    } 
+  }
+
 
   // Method that handles listening exceptions by displaying exception information.
   public void listeningException(Throwable exception) 

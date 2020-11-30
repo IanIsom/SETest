@@ -14,12 +14,14 @@ public class P1GameArenaPanel extends JPanel {
 	private JLabel characterOne;
 	
 	
-	public void setHp1(String hp) {
-		hp1Indicator.setText(hp);
+	public void setHp1(double d) {
+		String str = String.valueOf(d);
+		hp1Indicator.setText(str);
 	}
 	
-	public void setHp2(String hp) {
-		hp2Indicator.setText(hp);
+	public void setHp2(double d) {
+		String str = String.valueOf(d);
+		hp2Indicator.setText(str);
 	}
 	
 	public void setChar1(String character1) {
@@ -99,7 +101,7 @@ public class P1GameArenaPanel extends JPanel {
 		JPanel panel_6 = new JPanel();
 		add(panel_6);
 				
-				//Player 1 Buttons----------------------------------------------
+		//Player 1 Buttons----------------------------------------------
 		JButton attackButton = new JButton("Attack");
 		panel_6.add(attackButton);
 		attackButton.addActionListener((ActionListener) ga1);

@@ -5,8 +5,10 @@ import java.io.Serializable;
 public class CharacterData implements Serializable{
 	  private String username;
 	  private String character;
-	  private String hp;
-	  private String attack;
+	  private double hp;
+	  private int attack;
+	  private boolean turn;
+	
 	  
 	 public String getUsername() {
 		return username;
@@ -16,11 +18,11 @@ public class CharacterData implements Serializable{
 		return character;
 	}
 	
-	public String getHp() {
+	public double getHp() {
 		return hp;
 	}
 	
-	public String getAttack() {
+	public int getAttack() {
 		return attack;
 	}
 	
@@ -32,19 +34,27 @@ public class CharacterData implements Serializable{
 		this.character = character;
 	} 
 	
-	public void setHp(String hp) {
-		this.hp = hp;
+	public void setHp(double dmg) {
+		this.hp = dmg;
 	} 
 	
-	public void setAttack(String attack) {
+	public void setAttack(int attack) {
 		this.attack = attack;
 	} 
 	
-	public CharacterData(String username, String character, String hp, String attack) {
+	public CharacterData(String username, String character, int hp, int attack) {
 		setUsername(username);
 		setCharacter(character);
 		setHp(hp);
 		setAttack(attack);
+	}
+
+	public void setTurn(boolean t) {
+		this.turn = t;
+	}
+
+	public boolean getTurn() {
+		return turn;
 	}
 
 }

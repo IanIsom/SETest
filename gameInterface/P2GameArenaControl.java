@@ -7,11 +7,12 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 import GUI.P1GameArenaPanel;
+import GUI.P2GameArenaPanel;
 import clientSubSystem.GameClient;
 
 public class P2GameArenaControl implements ActionListener{
 
-	private JPanel container;
+	private static JPanel container;
 	private GameClient client;
 
 	public P2GameArenaControl(JPanel container, GameClient client) {
@@ -29,7 +30,7 @@ public class P2GameArenaControl implements ActionListener{
 		if (command.equals("Attack"))
 		{
 			try {
-				client.sendToServer("Attack");
+				client.sendToServer("Attack2");
 
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
@@ -57,4 +58,21 @@ public class P2GameArenaControl implements ActionListener{
 		}
 
 	}
+
+
+	public static void dmgCalc1(Object arg0) {
+		P2GameArenaPanel p2 = (P2GameArenaPanel)container.getComponent(6);
+		System.out.println(arg0);
+		p2.setHp2(p2.getHp2() - (double) arg0);
+		
+	}
+
+	public static void dmgCalc3(Object arg0) {
+		P2GameArenaPanel p2 = (P2GameArenaPanel)container.getComponent(6);
+		System.out.println(arg0);
+		p2.setHp1(p2.getHp1() - (double) arg0);
+		
+	}
+
+	
 }

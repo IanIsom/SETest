@@ -10,6 +10,11 @@ import java.awt.event.ActionListener;
 public class CharacterSelectPanel extends JPanel {
 
 	private JLabel errorLabel;
+	 private JButton[] button = new JButton[4];
+	 
+	 public JButton getButtonAt(int row) {
+		 return button[row];
+	 }
 	
 
 	public CharacterSelectPanel(CharacterSelectControl cs) {
@@ -19,9 +24,9 @@ public class CharacterSelectPanel extends JPanel {
 		JPanel panel_2 = new JPanel();
 		add(panel_2);
 		
-		JButton btnNewButton = new JButton("Choose Character 1");
-		panel_2.add(btnNewButton);
-		btnNewButton.addActionListener((ActionListener) cs);
+		button[0] = new JButton("Choose Character 1");
+		panel_2.add(button[0]);
+		button[0].addActionListener((ActionListener) cs);
 		
 		//Character 1 Label and Button------------------------------------------------
 		JLabel character1Label = new JLabel("Character 1 Name(Water)");
@@ -31,9 +36,9 @@ public class CharacterSelectPanel extends JPanel {
 		JPanel panel_3 = new JPanel();
 		add(panel_3);
 		
-		JButton btnNewButton_1 = new JButton("Choose Character 2");
-		panel_3.add(btnNewButton_1);	
-		btnNewButton_1.addActionListener((ActionListener) cs);
+		button[1] = new JButton("Choose Character 2");
+		panel_3.add(button[1]);	
+		button[1].addActionListener((ActionListener) cs);
 		//----------------------------------------------------------------------------
 				
 		//Character 2 Label and Button------------------------------------------------
@@ -56,9 +61,9 @@ public class CharacterSelectPanel extends JPanel {
 		JPanel panel_4 = new JPanel();
 		add(panel_4);
 		
-		JButton btnNewButton_2 = new JButton("Choose Character 3");
-		panel_4.add(btnNewButton_2);
-		btnNewButton_2.addActionListener((ActionListener) cs);
+		button[2] = new JButton("Choose Character 3");
+		panel_4.add(button[2]);
+		button[2].addActionListener((ActionListener) cs);
 		
 		JLabel lblNewLabel = new JLabel("Character 3 Name (Earth)");
 		panel_4.add(lblNewLabel);
@@ -66,9 +71,9 @@ public class CharacterSelectPanel extends JPanel {
 		JPanel panel_5 = new JPanel();
 		add(panel_5);
 		
-		JButton btnNewButton_3 = new JButton("Choose Character 4");
-		panel_5.add(btnNewButton_3);
-		btnNewButton_3.addActionListener((ActionListener) cs);
+		button[3] = new JButton("Choose Character 4");
+		panel_5.add(button[3]);
+		button[3].addActionListener((ActionListener) cs);
 		
 		JLabel lblNewLabel_1 = new JLabel("Character 4 Name (Air)");
 		panel_5.add(lblNewLabel_1);
@@ -86,9 +91,4 @@ public class CharacterSelectPanel extends JPanel {
 		panel_7.add(lblNewLabel_5);
 	}
 	
-	//setter for error text
-	public void setError(String error)
-	{
-		errorLabel.setText(error);
-	}
 }

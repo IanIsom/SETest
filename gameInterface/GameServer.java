@@ -237,6 +237,7 @@ public class GameServer extends AbstractServer
 		
 		while (gameActive == true) {
 			// if Player 1 Attacks Player 2
+	    	System.out.println("Hit while");
 		
 			if (charSelected.get(0).getTurn() == true) {
 				//random number 0-Attack

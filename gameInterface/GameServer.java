@@ -215,6 +215,7 @@ public class GameServer extends AbstractServer
     		} catch (IOException e) {
     			e.printStackTrace();
     		}
+    		//change
     	}
     	try {
 			arg1.sendToClient("Finding");

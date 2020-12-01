@@ -27,6 +27,8 @@ public class GameServer extends AbstractServer
 	public ArrayList<CharacterData> charSelected = new ArrayList<CharacterData>();
 	private boolean gameActive;
 	private int turnCount;
+	private double totalDmg1;
+	private double totalDmg2;
 
 
 	// Constructor for initializing the server with default settings.
@@ -234,8 +236,9 @@ public class GameServer extends AbstractServer
 		else if(arg0.equals("Attack1")) {
 			System.out.println("Player 1 Attacks!\n");
 			
-			if (charSelected.get(1).getHp() <= 0) {
+			if (charSelected.get(1).getHp() < totalDmg1) {
 				System.out.println("Player 1 Wins! \n");
+				System.exit(1);
 			}
 			
 			//high and low
@@ -254,7 +257,9 @@ public class GameServer extends AbstractServer
 				dmg *= 100.00;
 				//tell the log that he did action and dmg
 				log.append(arg1.getId() + " has attacked Player 2 for " + dmg/100 + "\n");
-
+				
+				
+				
 				//player1 turn is up
 				charSelected.get(0).setTurn(true);
 				charSelected.get(1).setTurn(false);
@@ -263,6 +268,7 @@ public class GameServer extends AbstractServer
 				try {
 					queue.get(1).sendToClient(dmg);
 					queue.get(0).sendToClient(-dmg);
+					totalDmg1 += (dmg/100);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -276,8 +282,9 @@ public class GameServer extends AbstractServer
 		else if(arg0.equals("Attack2")) {
 			System.out.println("Player 2 Attacks!\n");
 			
-			if (charSelected.get(0).getHp() <= 0.00) {
+			if (charSelected.get(0).getHp() < totalDmg2) {
 				System.out.println("Player 2 Wins! \n");
+				System.exit(2);
 				
 			}
 			
@@ -298,15 +305,19 @@ public class GameServer extends AbstractServer
 
 				//tell the log that he did action and dmg
 				log.append(arg1.getId() + " has attacked Player 1 for " + dmg + "\n");
-
+				
+				
 				//player1 turn is up
 				charSelected.get(1).setTurn(true);
 				charSelected.get(0).setTurn(false);
-
+				
+				
 				//send dmg to client
 				try {
 					queue.get(1).sendToClient(dmg);
 					queue.get(0).sendToClient(-dmg);
+					
+					totalDmg2 += dmg;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

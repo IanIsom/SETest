@@ -234,11 +234,15 @@ public class GameServer extends AbstractServer
 		int min = 0;
 		int max = charSelected.get(0).getAttack();
 		int max2 = charSelected.get(1).getAttack();
-		
+
 		while (gameActive == true) {
+
 			// if Player 1 Attacks Player 2
-		
-			if (charSelected.get(0).getTurn() == true) {
+			boolean bol = false;
+			boolean bol2 = false;
+															// I dont know how to fix this...
+			if(bol = charSelected.get(0).getTurn() == false) // ISSUE CANNOT TYPECAST OBJ TO PRIM COMPARSION
+			{
 				//random number 0-Attack
 				double dmg = Math.random() * ( max  - min + 1) + min;
 
@@ -247,21 +251,26 @@ public class GameServer extends AbstractServer
 
 
 				//send dmg to receiving client
-				charSelected.get(1).setHp(dmg);
+				//charSelected.get(1).setHp(dmg);
+				
 
 				//player1 turn is up
 				charSelected.get(0).setTurn(false);
 			}
 
-			if (charSelected.get(1).getTurn() == true) {
+			//queue.sendToClient(charSelected.get(0).getTurn().isEquals(false);
+			if (bol2 = charSelected.get(1).getTurn() == (false)) {
 				//random number 0-Attack
 				double dmg = Math.random() * ( max2  - min + 1) + min;
 
 				//tell the log that he did action and dmg
-				log.append(((Thread) arg0).getId() + " has attacked Player 1 for " + dmg + "\n");
+				log.append(arg1.getId() + " has attacked Player 1 for " + dmg + "\n");
 
 
 				//send dmg to receiving client
+				//arg1.sendToClient(arg0);
+				
+				//
 				charSelected.get(0).setHp(dmg);
 
 				//player2 turn is up
@@ -276,6 +285,12 @@ public class GameServer extends AbstractServer
 				//set both players to can attack to true
 				charSelected.get(0).setTurn(true);
 				charSelected.get(1).setTurn(true);
+			}
+			
+			if (charSelected.get(0).getHp() <= 0 || charSelected.get(1).getHp() <= 0) 
+			{
+				System.out.println("A Player " + arg1.getId() + " has won the game.");
+				break;
 			}
 		}
     } 
@@ -292,7 +307,7 @@ public class GameServer extends AbstractServer
     		// if Player 1 Attacks Player 2 defends
     		if (charSelected.get(0).getTurn() == true) {
     			//random number 0-Attack
-    			double dmg = (Math.random() * ( max  - min + 1) + min)/2;
+    			double dmg = (Math.random() * ( max  - min + 1) + min) / 2;
 
     			//tell the log that he did action and dmg
     			log.append(arg1.getId() + " has attacked Player 2 for  " + dmg + " but it was reduced due to block!\n");
@@ -310,7 +325,7 @@ public class GameServer extends AbstractServer
     			double dmg = Math.random() * ( max2  - min + 1) + min;
 
     			//tell the log that he did action and dmg
-    			log.append(((Thread) arg0).getId() + " has attacked Player 1 for  " + dmg + " but it was reduced due to block!\n");
+    			log.append(arg1.getId() + " has attacked Player 1 for  " + dmg + " but it was reduced due to block!\n");
 
 
     			//send dmg to receiving client

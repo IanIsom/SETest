@@ -7,7 +7,7 @@
 	</classpathentry>
 	<classpathentry kind="src" path=""/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="C:/Users/Ian/Desktop/mysql-connector-java-5.1.40-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Ian/Desktop/ocsf.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/eclipse/SE_Fall2020/TeamProjectSE/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/eclipse/SE_Fall2020/TeamProjectSE/ocsf.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

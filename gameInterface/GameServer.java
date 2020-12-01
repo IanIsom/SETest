@@ -166,7 +166,7 @@ public class GameServer extends AbstractServer
 				result = new Error("The username is already in use.", "CreateAccount");
 				log.append("Client " + arg1.getId() + " failed to create a new account\n");
 			}
-			
+
 			// Send the result to the client.
 			try
 			{
@@ -224,14 +224,20 @@ public class GameServer extends AbstractServer
 		}  
 		else if(arg0.equals("Quit1")) {
 			System.out.println("PLAYER 1 RAGE QUIT");
+			System.exit(0);
 		} 
 		else if(arg0.equals("Quit2")) {
 			System.out.println("PLAYER 2 RAGE QUIT");
+			System.exit(0);
 		} 
 
 		else if(arg0.equals("Attack1")) {
 			System.out.println("Player 1 Attacks!\n");
-
+			
+			if (charSelected.get(1).getHp() <= 0) {
+				System.out.println("Player 1 Wins! \n");
+			}
+			
 			//high and low
 			int min = 0;
 			int max = charSelected.get(0).getAttack();
@@ -250,7 +256,8 @@ public class GameServer extends AbstractServer
 				log.append(arg1.getId() + " has attacked Player 2 for " + dmg/100 + "\n");
 
 				//player1 turn is up
-				charSelected.get(0).setTurn(false);
+				charSelected.get(0).setTurn(true);
+				charSelected.get(1).setTurn(false);
 
 				//send dmg to client
 				try {
@@ -263,25 +270,17 @@ public class GameServer extends AbstractServer
 			}
 
 
-			//both players have to make a choice
-//			if (charSelected.get(0).getTurn() == false && charSelected.get(1).getTurn() == false) {
-//				turnCount++; //after both players send input turn count++
-//
-//				//set both players to can attack to true
-//				charSelected.get(0).setTurn(true);
-//				charSelected.get(1).setTurn(true);
-//			}
 
-			//			if (charSelected.get(0).getHp() <= 0 || charSelected.get(1).getHp() <= 0) 
-			//			{
-			//				System.out.println("A Player " + arg1.getId() + " has won the game.");
-			//
-			//			}
 		}
-		
+
 		else if(arg0.equals("Attack2")) {
 			System.out.println("Player 2 Attacks!\n");
-
+			
+			if (charSelected.get(0).getHp() <= 0.00) {
+				System.out.println("Player 2 Wins! \n");
+				
+			}
+			
 			//high and low
 			int min = 0;
 			int max = charSelected.get(1).getAttack();
@@ -296,11 +295,12 @@ public class GameServer extends AbstractServer
 				System.out.println("hit p2");
 				//random number 0-Attack
 				double dmg = Math.round(Math.random() * ( max  - min + 1) + min);
-				
+
 				//tell the log that he did action and dmg
 				log.append(arg1.getId() + " has attacked Player 1 for " + dmg + "\n");
 
 				//player1 turn is up
+				charSelected.get(1).setTurn(true);
 				charSelected.get(0).setTurn(false);
 
 				//send dmg to client
@@ -311,68 +311,6 @@ public class GameServer extends AbstractServer
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			}
-
-		}
-
-		else if(arg0.equals("Defend1")) {
-			System.out.println("Player 1 choses DEFEND");
-
-			int min = 0;
-			int max = charSelected.get(0).getAttack();
-			int max2 = charSelected.get(1).getAttack();
-
-
-			// if Player 1 Attacks Player 2 defends
-			if (charSelected.get(0).getTurn() == true) {
-				//random number 0-Attack
-				double dmg = (Math.random() * ( max  - min + 1) + min) / 2;
-
-				//tell the log that he did action and dmg
-				log.append(arg1.getId() + " has attacked Player 2 for  " + dmg + " but it was reduced due to block!\n");
-
-
-				//send dmg to receiving client
-				charSelected.get(1).setHp(dmg);
-
-				//player1 turn is up
-				charSelected.get(0).setTurn(false);
-			}
-
-			if (charSelected.get(1).getTurn() == true) {
-				//random number 0-Attack
-				double dmg = Math.random() * ( max2  - min + 1) + min;
-
-				//tell the log that he did action and dmg
-				log.append(arg1.getId() + " has attacked Player 1 for  " + dmg + " but it was reduced due to block!\n");
-
-
-				//send dmg to receiving client
-				charSelected.get(0).setHp(dmg);
-
-				//player2 turn is up
-				charSelected.get(1).setTurn(false);
-			}
-
-			if (charSelected.get(0).getTurn() == false && charSelected.get(1).getTurn() == false) {
-				turnCount++; //after both players send input turn count++
-
-				//set both players to can attack to true
-				charSelected.get(0).setTurn(true);
-				charSelected.get(1).setTurn(true);
-			}
-		}
-		else if(arg0.equals("Defend2")) {
-			System.out.println("Player 2 choses DEFEND");
-			
-			
-			
-			if (charSelected.get(0).getTurn() == false && charSelected.get(1).getTurn() == false) {
-				turnCount++; //after both players send input turn count++
-
-				//set both players to can attack to true
-				charSelected.get(0).setTurn(true);
-				charSelected.get(1).setTurn(true);
 			}
 		}
 	}

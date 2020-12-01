@@ -49,7 +49,7 @@ public class GameClient extends AbstractClient
 	// Constructor for initializing the client with default settings.
 	public GameClient()
 	{
-		super("localhost", 8300);
+		super("45.131.192.160", 8300);
 	}
 
 	// Method that handles messages from the server.

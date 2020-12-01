@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import gameInterface.*;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 
 public class P2GameArenaPanel extends JPanel {
 	
@@ -112,10 +113,12 @@ public class P2GameArenaPanel extends JPanel {
 				//Player 1 Buttons----------------------------------------------
 		JButton attackButton = new JButton("Attack");
 		panel_6.add(attackButton);
-				
+		attackButton.addActionListener((ActionListener) ga2);
+		
 		JButton defendButton = new JButton("Defend");
 		panel_6.add(defendButton);
-				
+		defendButton.addActionListener((ActionListener) ga2);
+		
 		JPanel panel_9 = new JPanel();
 		add(panel_9);
 				
@@ -130,6 +133,7 @@ public class P2GameArenaPanel extends JPanel {
 				
 		JButton quitButton = new JButton("Quit Game");
 		panel_12.add(quitButton);
+		quitButton.addActionListener((ActionListener) ga2);
 	}
 
 	

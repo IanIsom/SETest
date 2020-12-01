@@ -2,7 +2,6 @@ package GUI;
 
 import javax.swing.*;
 
-import javax.swing.SwingConstants;
 import gameInterface.CharacterSelectControl;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -45,13 +44,13 @@ public class CharacterSelectPanel extends JPanel {
 		JPanel panel = new JPanel();
 		add(panel);
 		
-		JLabel lblNewLabel_2 = new JLabel("Character 1 Icon");
+		JLabel lblNewLabel_2 = new JLabel(new ImageIcon(this.getClass().getResource("/waterwiz.png")));
 		panel.add(lblNewLabel_2);
 		
 		JPanel panel_1 = new JPanel();
 		add(panel_1);
 		
-		JLabel lblNewLabel_3 = new JLabel("Character 2 Icon");
+		JLabel lblNewLabel_3 = new JLabel(new ImageIcon(this.getClass().getResource("/fireWiz.png")));
 		panel_1.add(lblNewLabel_3);
 		
 		JPanel panel_4 = new JPanel();
@@ -77,13 +76,13 @@ public class CharacterSelectPanel extends JPanel {
 		JPanel panel_6 = new JPanel();
 		add(panel_6);
 		
-		JLabel lblNewLabel_4 = new JLabel("Character 3 Icon");
+		JLabel lblNewLabel_4 = new JLabel(new ImageIcon(this.getClass().getResource("/earthWiz.png")));
 		panel_6.add(lblNewLabel_4);
 		
 		JPanel panel_7 = new JPanel();
 		add(panel_7);
 		
-		JLabel lblNewLabel_5 = new JLabel("Character 4 Icon");
+		JLabel lblNewLabel_5 = new JLabel(new ImageIcon(this.getClass().getResource("/whiteWiz.png")));
 		panel_7.add(lblNewLabel_5);
 	}
 	

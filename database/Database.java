@@ -57,13 +57,6 @@ public class Database
 	      
 	  }
 	  
-	  public void executeDML(String dml) throws SQLException
-	  {
-		  Statement stmt = conn.createStatement();
-	      stmt.execute(dml);
-	
-	  }
-	  
 	  // Method for verifying a username and password.
 	  public boolean verifyAccount(String username, String password)
 	  {		

@@ -166,7 +166,7 @@ public class GameServer extends AbstractServer
 				result = new Error("The username is already in use.", "CreateAccount");
 				log.append("Client " + arg1.getId() + " failed to create a new account\n");
 			}
-
+			
 			// Send the result to the client.
 			try
 			{

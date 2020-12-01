@@ -9,9 +9,11 @@ import java.awt.event.ActionListener;
 public class P1GameArenaPanel extends JPanel {
 	
 	private JLabel hp2Indicator;
-	private JLabel hp1Indicator;
-	private JLabel characterTwo;
-	private JLabel characterOne;
+	private JLabel hp1Indicator;	
+	private JLabel characterTwo = new JLabel();
+	private JLabel characterOne = new JLabel();
+	
+
 	
 	
 	public double getHp1() {
@@ -32,11 +34,46 @@ public class P1GameArenaPanel extends JPanel {
 	}
 	
 	public void setChar1(String character1) {
-		characterOne.setText(character1);
+		if(character1.equals("Water")) {
+
+			
+			characterOne.setIcon(new ImageIcon(this.getClass().getResource("/waterwiz.png")));
+			
+		}
+		else if(character1.equals("Fire")) {
+			characterOne.setIcon(new ImageIcon(this.getClass().getResource("/fireWiz.png")));
+			
+		}
+		else if(character1.equals("Earth")) {
+			characterOne.setIcon(new ImageIcon(this.getClass().getResource("/earthWiz.png")));
+			
+		}
+		else if(character1.equals("Air")) {
+			characterOne.setIcon(new ImageIcon(this.getClass().getResource("/whiteWiz.png")));
+			
+		}
+
 	}
 	
 	public void setChar2(String character2) {
-		characterTwo.setText(character2);
+		if(character2.equals("Water")) {
+
+			
+			characterTwo.setIcon(new ImageIcon(this.getClass().getResource("/waterwiz.png")));
+			
+		}
+		else if(character2.equals("Fire")) {
+			characterTwo.setIcon(new ImageIcon(this.getClass().getResource("/fireWiz.png")));
+			
+		}
+		else if(character2.equals("Earth")) {
+			characterTwo.setIcon(new ImageIcon(this.getClass().getResource("/earthWiz.png")));
+			
+		}
+		else if(character2.equals("Air")) {
+			characterTwo.setIcon(new ImageIcon(this.getClass().getResource("/whiteWiz.png")));
+			
+		}
 	}
 
 	public P1GameArenaPanel(P1GameArenaControl ga1) {
@@ -86,8 +123,7 @@ public class P1GameArenaPanel extends JPanel {
 				
 		JPanel panel_8 = new JPanel();
 		add(panel_8);
-				
-		characterOne = new JLabel("Character1 Goes Here");
+
 		panel_8.add(characterOne);
 				
 		JPanel panel_1 = new JPanel();
@@ -101,8 +137,7 @@ public class P1GameArenaPanel extends JPanel {
 				
 		JPanel panel_3 = new JPanel();
 		add(panel_3);
-				
-		characterTwo = new JLabel("Character 2 Goes Here");
+
 		panel_3.add(characterTwo);
 				
 		JPanel panel_6 = new JPanel();

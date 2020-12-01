@@ -69,7 +69,6 @@ public class LoginControl implements ActionListener
 
   public void loginSuccess()
   {
-    LoginPanel loginPanel = (LoginPanel)container.getComponent(1);
     CardLayout cardLayout = (CardLayout)container.getLayout();
     cardLayout.show(container, "4");
   }

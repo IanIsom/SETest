@@ -13,6 +13,14 @@ public class P2GameArenaPanel extends JPanel {
 	private JLabel characterOne;
 	
 	
+	public double getHp1() {
+		return Double.parseDouble(hp1Indicator.getText());
+	}
+	
+	public double getHp2() {
+		return Double.parseDouble(hp2Indicator.getText());
+	}
+	
 	public void setHp1(double d) {
 		String str = String.valueOf(d);
 		hp1Indicator.setText(str);

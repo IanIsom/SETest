@@ -112,7 +112,11 @@ public class GameClient extends AbstractClient
     }
     else if(arg0 instanceof ArrayList) {
     	gameLobbyControl.setData((ArrayList<CharacterData>) arg0);
-  
+    }
+    
+    else if(arg0 instanceof Double) {
+    	P1GameArenaControl.dmgCalc(arg0);
+    	P2GameArenaControl.dmgCalc(arg0);
     }
   }
   public void setData(CharacterData data) {
